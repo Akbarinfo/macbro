@@ -1,2 +1,180 @@
 /* MAIN PART  */
 
+.mac {
+
+  &__main {
+    display: flex;
+  }
+
+  &__imgboxs {
+    width: 50%;
+  }
+
+  &__bigimgbox {
+    width: 577px;
+    height: 500px;
+    overflow: hidden;
+  }
+
+  &__bigimg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__imglist {
+    display: flex;
+    list-style-type: none;
+  }
+
+  &__imgitem {
+    width: 100px;
+    height: 100px;
+    padding: 4px;
+    overflow: hidden;
+  }
+
+  &__minimg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__box {
+    width: 50%;
+  }
+
+  &__name {
+    font-size: 48px;
+    color: #1d1d1d;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0 0 10px
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 700;
+    padding-top: 30px;
+
+    margin-bottom: 10px;
+  }
+
+  &__rambox {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+  }
+
+  &__rambtn,
+  &__memrbtn,
+  &__colbtn {
+    width: 189px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #888;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 21px;
+    text-transform: uppercase;
+    color: #1d1d1d;
+    padding: 10px 12px;
+    transition: 0.3s;
+    background: transparent;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+
+  &__memrbox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+  }
+
+  &__memrbtn {
+
+  }
+
+  &__colbox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+  }
+
+  &__colbtn {
+    width: 267px;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 10px;
+  }
+
+  &__coltl,
+  &__colk,
+  &__colkk  {
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgb(210, 157, 0);
+    box-shadow: 1px 1px 5px rgb(0 0 0 / 10%);
+  }
+
+  &__colk {
+    background-color: silver;
+  }
+
+  &__colkk {
+    background-color: grey;
+  }
+
+  &__form {
+
+  }
+
+  &__frminus {
+
+  }
+
+  &__frplus {
+
+  }
+
+  &__pricebox {
+
+  }
+
+  &__prsale {
+
+  }
+
+  &__price {
+
+  }
+
+  &__bagbox {
+
+  }
+
+  &__bagbtn {
+
+  }
+
+  &__bagbt {
+
+  }
+
+  .activ {
+    border: 1px solid #06c;
+    box-shadow: 0 0 1px 1px #06c;
+  }
+
+}
