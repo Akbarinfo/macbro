@@ -125,6 +125,11 @@
     background: transparent;
     cursor: pointer;
     margin-right: 8px;
+
+    &:hover {
+      border: 1px solid #06c;
+      box-shadow: 0 0 1px 1px #06c;
+    }
   }
 
   &__memrbox {
@@ -212,10 +217,6 @@
     &:focus {
       outline: none;
     }
-  }
-
-  &__frplus {
-
   }
 
   &__pricebox {

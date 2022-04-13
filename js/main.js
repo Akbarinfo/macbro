@@ -1,4 +1,10 @@
-let elBox = document.querySelector('#boxsid')
+// const elBigImg = document.querySelector('#bigimg')
+// const elMinImg = document.querySelector('#minimg')
+const elImgBox = document.querySelector('#imgbox')
+const elRam = document.querySelector('#ram')
+const elMem = document.querySelector('#mem')
+const elColor = document.querySelector('#color')
+const elPrice = document.querySelector('#price')
 
 //creatElements
 function creatElements(...array) {
@@ -7,224 +13,144 @@ function creatElements(...array) {
   })
 }
 
+//ram va memory qo'shish
 
-// macArr.forEach((item, index) => {
-//   let [imgboxs, bigimgbox, bigimg, bigimgbtn, btnicons, ulbox] = creatElements('div', 'div', 'img', 'button', 'i', 'ul')
+function addRamMemBtn(macObj) {
+  elRam.innerHTML = "";
+  elMem.innerHTML = "";
+  elColor.innerHTML = null
+  elImgBox.innerHTML = null
+  macObj.ram.forEach((element) => {
+    let rambtn = document.createElement('button');
+    rambtn.className = 'mac__rambtn'
+    if(element.active) {
+      rambtn.className = 'mac__rambtn activ'
 
-//   //imgs
-//   imgboxs.className = 'mac__imgboxs',
-//   bigimgbox.className = 'mac__bigimgbox',
+      //memoryni qo'shib ketish qismi
+      element.memory.forEach((item) => {
+        let membtn = document.createElement('button');
+        membtn.className = 'mac__rambtn'
 
-//   //img
-//   bigimg.className = 'mac__bigimg',
-//   bigimg.src = item.img
-
-//   //btn icons
-//   btnicons.className = 'bx bx-fullscreen'
-
-//   //button
-//   bigimgbtn.className = 'mac__imgboxbtn',
-//   bigimgbtn.setAttribute('type', 'button')
-//   bigimgbtn.appendChild(btnicons)
-
-//   //Mini rasmlar box
-//   ulbox.className = 'mac__imglist'
-
-//   //mini rasmlar bilan ishlash
-//   // let minimg = item.colors[2].length
-//   // console.log(minimg)
-
-//   let minimg = macArr.length
-
-
-//   for(let i = 0; i < minimg.length; i++) {
-//     console.log(minimg[i])
-//     //li box va img yaratish
-//     let liimg = document.createElement('li');
-//     let imgmini = document.createElement('img');
-
-//     // li box
-//     liimg.className = 'mac__imgitem'
-
-//     // mini img
-//     imgmini.className = 'mac__minimg'
-//     imgmini.src = minimg[i]
-//     liimg.appendChild(imgmini)
-//     ulbox.appendChild(liimg)
-//   }
-//   // mini imglarni olib kelish tugadi
-
-//   //divlarga qo'shish
-//   bigimgbox.appendChild(bigimg)
-//   bigimgbox.appendChild(bigimgbtn)
-//   imgboxs.appendChild(bigimgbox)
-//   imgboxs.appendChild(ulbox)
-
-  ///right part
-  // let [imgboxs, bigimgbox, bigimg, bigimgbtn, btnicons, ulbox] = creatElements('div', 'div', 'img', 'button', 'i', 'ul')
-
-
-
-  // boxs.className = 'mac__box'
-  // boxs.innerHTML = `
-  //   <h2 class="mac__name">MacBook Air 13-inch M1/8/256 Gold <img class="mac__icons" src="img/podelsiya.svg" alt="podelsiya"></h2>
-
-  //   <h3 class="mac__title">Ram</h3>
-  //   <div class="mac__rambox">
-  //     <button class="mac__rambtn activ">8gb</button>
-  //     <button class="mac__rambtn">16gb</button>
-  //   </div>
-
-  //   <h3 class="mac__title">Xotira Hajmi</h3>
-  //   <div class="mac__memrbox">
-  //     <button class="mac__memrbtn activ">256gb</button>
-  //     <button class="mac__memrbtn">512gb</button>
-  //     <button class="mac__memrbtn" style="display: none;">1tb</button>
-  //   </div>
-
-  //   <h3 class="mac__title">Ranglar</h3>
-  //   <div class="mac__colbox">
-  //     <button class="mac__colbtn activ"><span class="mac__coltl"></span>
-  //     Tilla rang
-  //     </button>
-  //     <button class="mac__colbtn"><span class="mac__colk"></span>Kumush rang</button>
-  //     <button class="mac__colbtn"><span class="mac__colkk"></span>Kosmik kulrang</button>
-  //   </div>
-
-  //   <form class="mac__form" action="">
-  //     <button class="mac__frminus"><i class='bx bx-minus mac__fricon'></i></button>
-  //     <input class="mac__frinput" type="number" value="1" placeholder="1">
-  //     <button class="mac__frplus"><i class='bx bx-plus mac__fricon'></i></button>
-  //   </form>
-
-  //   <div class="mac__pricebox">
-  //     <p class="mac__prsale">12 497 000so'm</p>
-  //     <p class="mac__price">14 621 000so'm</p>
-  //   </div>
-
-  //   <div class="mac__bagbox">
-  //     <button class="mac__bagbtn">Savatchaga qo'shish</button>
-  //     <button class="mac__bagbt">Taqqoslash</button>
-  //   </div>
-  // `
-
-  // elBox.appendChild(imgboxs)
-  // elBox.appendChild(boxs)
-// })
-
-// console.log(macObj.colors[0].imgs)
-let ram = macObj.ram
-
-// console.log(ram)
-
-function addWind() {
-  for(let i = 0; i < ram.length; i++) {
-    let mem = ram[i].memory
-
-    // console.log(mem)
-    for(let j = 0; j < mem.length; j++) {
-      if(mem[j].active) {
-        console.log(mem[j])
-      }
+        if(item.active) {
+          membtn.classList.add('activ')
+        }
+        membtn.setAttribute('id', item.size)
+        membtn.innerHTML = `${item.size}GB`
+        elMem.appendChild(membtn)
+      })
     }
-    if(ram[i].active == true) {
-      console.log(ram[i])
+    rambtn.setAttribute('id', element.ramSize)
+    rambtn.innerHTML = `${element.ramSize}GB`
+    elRam.appendChild(rambtn)
+  })
+
+  //Color qo'shish
+  macObj.colors.forEach((item) => {
+    let [colbtn, colspan, name] = creatElements('button', 'span', 'span')
+    // let colbtn = document.createElement('button');
+    colbtn.className = 'mac__colbtn'
+    colbtn.setAttribute('id', item.id)
+    colspan.className = 'mac__coltl'
+    colspan.setAttribute('id', item.color)
+    colspan.style.backgroundColor = item.color
+    name.setAttribute('id', item.name)
+    name.textContent = item.name
+
+    if(item.active) {
+      colbtn.className = 'mac__colbtn activ'
     }
-  }
+    colbtn.appendChild(colspan)
+    colbtn.appendChild(name)
+    elColor.appendChild(colbtn)
+  })
+
+  //Rasmlar qo'shish
+
+  macObj.colors.forEach((item) => {
+    let [bigbox, ul, img, button, btnicons] = creatElements('div', 'ul', 'img', 'button', 'i');
+
+    bigbox.className = 'mac__bigimgbox'
+    btnicons.className = 'bx bx-fullscreen'
+    button.className = 'mac__imgboxbtn'
+    button.appendChild(btnicons)
+    img.className = 'mac__bigimg'
+    ul.className = 'mac__imglist'
+
+    if(item.active) {
+      img.src = item.img
+      // mini imglarni qo'shish
+      item.imgs.forEach((img) => {
+        let [li, minimg] = creatElements('li', 'img');
+        li.className = 'mac__imgitem'
+        minimg.className = 'mac__minimg'
+        if(item.active) {
+          minimg.src = img
+        }
+        li.appendChild(minimg)
+        ul.appendChild(li)
+      })
+      bigbox.appendChild(img)
+      bigbox.appendChild(button)
+      elImgBox.appendChild(bigbox)
+      elImgBox.appendChild(ul)
+    }
+
+
+  });
+
+}
+addRamMemBtn(macObj)
+
+//Ramga active berish qismi
+elRam.addEventListener('click', (e) => {
+  let id = e.target.id
+  macObj.ram.forEach((element) => {
+    element.active = false
+    if(id == element.ramSize) {
+      element.active = true
+    }
+  });
+  addPrice(macObj)
+  memActive(macObj)
+  addRamMemBtn(macObj)
+})
+
+// Memoryga active berish qismi
+function memActive(macObj) {
+  elMem.addEventListener('click', (e) => {
+    let id = e.target.id
+    macObj.ram.forEach((el) => {
+      el.memory.forEach((item) => {
+        item.active = false;
+        if(id == item.size) {
+          item.active = true;
+        }
+      });
+    });
+    addPrice()
+    addRamMemBtn(macObj)
+  });
 }
 
-addWind()
+elColor.addEventListener('click', (e) => {
+  let id = e.target.id
+  macObj.colors.forEach((items) => {
+    items.active = false
+    if(items.id == id || id == items.color || id == items.name) {
+      items.active = true
+    }
+  })
+  addRamMemBtn(macObj)
+})
 
-
-let [imgboxs, bigimgbox, bigimg, bigimgbtn, btnicons, ulbox, boxs] = creatElements('div', 'div', 'img', 'button', 'i', 'ul', 'div')
-
-//imgs
-imgboxs.className = 'mac__imgboxs',
-bigimgbox.className = 'mac__bigimgbox',
-
-//img
-bigimg.className = 'mac__bigimg',
-bigimg.src = macObj.colors[0].img
-
-//btn icons
-btnicons.className = 'bx bx-fullscreen'
-
-//button
-bigimgbtn.className = 'mac__imgboxbtn',
-bigimgbtn.setAttribute('type', 'button')
-bigimgbtn.appendChild(btnicons)
-
-//Mini rasmlar box
-ulbox.className = 'mac__imglist'
-
-//mini rasmlar bilan ishlash
-let minimg = macObj.colors[0].imgs
-
-for(let i = 0; i < minimg.length; i++) {
-  console.log(minimg[i])
-  //li box va img yaratish
-  let liimg = document.createElement('li');
-  let imgmini = document.createElement('img');
-
-  // li box
-  liimg.className = 'mac__imgitem'
-
-  // mini img
-  imgmini.className = 'mac__minimg'
-  imgmini.src = minimg[i]
-  liimg.appendChild(imgmini)
-  ulbox.appendChild(liimg)
+function addPrice(macObj) {
+  macObj.ram.forEach((item) => {
+    if(item.active) {
+      item.memory.forEach((el) => {
+        if(el.active) {
+          elPrice.textContent = `${el.price}So'm`
+        }
+      })
+    }
+  })
 }
-// mini imglarni olib kelish tugadi
-
-//divlarga qo'shish
-bigimgbox.appendChild(bigimg)
-bigimgbox.appendChild(bigimgbtn)
-imgboxs.appendChild(bigimgbox)
-imgboxs.appendChild(ulbox)
-
-  boxs.className = 'mac__box'
-  boxs.innerHTML = `
-    <h2 class="mac__name">MacBook Air 13-inch M1/8/256 Gold <img class="mac__icons" src="img/podelsiya.svg" alt="podelsiya"></h2>
-
-    <h3 class="mac__title">Ram</h3>
-    <div class="mac__rambox">
-      <button class="mac__rambtn activ">8gb</button>
-      <button class="mac__rambtn">16gb</button>
-    </div>
-
-    <h3 class="mac__title">Xotira Hajmi</h3>
-    <div class="mac__memrbox">
-      <button class="mac__memrbtn activ">256gb</button>
-      <button class="mac__memrbtn">512gb</button>
-      <button class="mac__memrbtn" style="display: none;">1tb</button>
-    </div>
-
-    <h3 class="mac__title">Ranglar</h3>
-    <div class="mac__colbox">
-      <button class="mac__colbtn activ"><span class="mac__coltl"></span>
-      Tilla rang
-      </button>
-      <button class="mac__colbtn"><span class="mac__colk"></span>Kumush rang</button>
-      <button class="mac__colbtn"><span class="mac__colkk"></span>Kosmik kulrang</button>
-    </div>
-
-    <form class="mac__form" action="">
-      <button class="mac__frminus"><i class='bx bx-minus mac__fricon'></i></button>
-      <input class="mac__frinput" type="number" value="1" placeholder="1">
-      <button class="mac__frplus"><i class='bx bx-plus mac__fricon'></i></button>
-    </form>
-
-    <div class="mac__pricebox">
-      <p class="mac__prsale">12 497 000so'm</p>
-      <p class="mac__price">14 621 000so'm</p>
-    </div>
-
-    <div class="mac__bagbox">
-      <button class="mac__bagbtn">Savatchaga qo'shish</button>
-      <button class="mac__bagbt">Taqqoslash</button>
-    </div>
-  `
-
-  elBox.appendChild(imgboxs)
-  elBox.appendChild(boxs)

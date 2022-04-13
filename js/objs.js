@@ -41,7 +41,7 @@ const macObj = {
   ],
   colors: [
     {
-      id: 1,
+      id: 'Gold',
       name: "Tilla rang",
       active: true,
       color: '#d29d00',
@@ -49,7 +49,7 @@ const macObj = {
       imgs: ['img/gold.webp', 'img/gold.1.webp', 'img/gold.2.webp', 'img/gold.3.webp', 'img/gold.4.webp'],
     },
     {
-      id: 2,
+      id: 'Silver',
       name: "Kumush rang",
       active: false,
       color: 'silver',
@@ -57,7 +57,7 @@ const macObj = {
       imgs: ['img/silver.webp', 'img/silver1.webp', 'img/silver2.webp', 'img/silver3.webp', 'img/silver4.webp'],
     },
     {
-      id: 3,
+      id: 'Gray',
       name: "Kosmik kulrang",
       active: false,
       color: 'grey',

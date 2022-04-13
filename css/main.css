@@ -194,6 +194,12 @@ html {
   margin-right: 8px;
 }
 
+.mac__rambtn:hover, .mac__memrbtn:hover, .mac__colbtn:hover {
+  border: 1px solid #06c;
+  -webkit-box-shadow: 0 0 1px 1px #06c;
+          box-shadow: 0 0 1px 1px #06c;
+}
+
 .mac__memrbox {
   width: 100%;
   display: -webkit-box;
