@@ -11,15 +11,37 @@
   }
 
   &__bigimgbox {
-    width: 577px;
+    position: relative;
+    height: calc(100vh - 200px);
     height: 500px;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__bigimg {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    max-height: 80%;
+    object-fit: contain;
+  }
+
+  &__imgboxbtn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    z-index: 4;
+    padding: 20px;
+    transition: all .3s ease-out;
+    filter: drop-shadow(0 2px 2px #1a1a1a);
+    cursor: pointer;
+
+    &:hover .bx-fullscreen {
+      color: #06c;
+    }
   }
 
   &__imglist {
@@ -30,8 +52,15 @@
   &__imgitem {
     width: 100px;
     height: 100px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.4s linear;
     padding: 4px;
     overflow: hidden;
+
+    &:hover {
+      border: 2px solid #1d1d1d;
+    }
   }
 
   &__minimg {
@@ -42,9 +71,11 @@
 
   &__box {
     width: 50%;
+    padding: 8px;
   }
 
   &__name {
+    position: relative;
     font-size: 48px;
     color: #1d1d1d;
     font-weight: 600;
@@ -52,25 +83,31 @@
     margin: 0 0 10px
   }
 
+  &__icons {
+    position: absolute;
+    top: 5px;
+    right: 0;
+  }
+
   &__title {
     font-size: 16px;
     line-height: 1.5;
     font-weight: 700;
     padding-top: 30px;
-
     margin-bottom: 10px;
   }
 
   &__rambox {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 8px;
+    // padding: 8px;
   }
 
   &__rambtn,
   &__memrbtn,
   &__colbtn {
-    width: 189px;
+    width: 171px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -83,7 +120,7 @@
     line-height: 21px;
     text-transform: uppercase;
     color: #1d1d1d;
-    padding: 10px 12px;
+    padding: 16px 10px;
     transition: 0.3s;
     background: transparent;
     cursor: pointer;
@@ -94,7 +131,7 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 8px;
+    // padding: 8px;
   }
 
   &__memrbtn {
@@ -105,7 +142,7 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 8px;
+    // padding: 8px;
   }
 
   &__colbtn {
@@ -114,7 +151,8 @@
     flex-direction: column;
     font-size: 12px;
     font-weight: 400;
-    margin-top: 10px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
   }
 
   &__coltl,
@@ -124,8 +162,9 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background-color: rgb(210, 157, 0);
-    box-shadow: 1px 1px 5px rgb(0 0 0 / 10%);
+    background-color: #d29d00;
+    // box-shadow: 1px 1px 5px rgb(0 0 0 / 10%);
+    margin-bottom: 7px;
   }
 
   &__colk {
@@ -137,11 +176,42 @@
   }
 
   &__form {
-
+    width: 200px;
+    display: grid;
+    grid-template-columns: 3fr 4fr 3fr;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    margin-top: 10px;
   }
 
-  &__frminus {
+  &__frminus,
+  &__frplus {
+    height: 40px;
+    font-weight: 600;
+    background: none;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
 
+  &__fricon {
+    font-size: 24px;
+    color: #000;
+  }
+
+  &__frinput {
+    width: 70px;
+    height: 40px;
+    border: none;
+    border-left: 1px solid #d6d6d6;
+    border-right: 1px solid #d6d6d6;
+    padding: 10px;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__frplus {
@@ -149,32 +219,61 @@
   }
 
   &__pricebox {
-
+    margin: 20px 0;
   }
 
   &__prsale {
-
+    font-size: 32px;
+    color: #1d1d1d;
+    font-weight: 600;
+    line-height: 1.5;
   }
 
   &__price {
-
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    text-decoration: line-through;
   }
 
   &__bagbox {
-
+    width: 100%;
+    padding-top: 15px;
   }
 
-  &__bagbtn {
-
+  &__bagbtn,
+  &__bagbt
+   {
+    background-color: #06c;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+    width: 100%;
+    min-width: 100px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    transition: transform .2s ease-in-out;
+    cursor: pointer;
   }
 
   &__bagbt {
-
+    background-color: #f5f5f7;
+    color: #06c;
   }
 
   .activ {
     border: 1px solid #06c;
     box-shadow: 0 0 1px 1px #06c;
   }
+}
 
+.bx-fullscreen {
+  font-size: 32px;
+  transition: all 0.3s linear;
 }
