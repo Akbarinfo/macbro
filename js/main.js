@@ -1,5 +1,7 @@
-// const elBigImg = document.querySelector('#bigimg')
-// const elMinImg = document.querySelector('#minimg')
+const elModal = document.querySelector('#modalimg')
+const elModalImg = document.querySelector('#modalMinImg')
+const elBigImg = document.querySelector('#bigimg')
+const elMinImg = document.querySelector('#minimg')
 const elImgBox = document.querySelector('#imgbox')
 const elRam = document.querySelector('#ram')
 const elMem = document.querySelector('#mem')
@@ -14,12 +16,14 @@ function creatElements(...array) {
 }
 
 //ram va memory qo'shish
-
 function addRamMemBtn(macObj) {
   elRam.innerHTML = "";
   elMem.innerHTML = "";
   elColor.innerHTML = null
-  elImgBox.innerHTML = null
+  elBigImg.innerHTML = null
+  elMinImg.innerHTML = null
+  elModal.innerHTML = null
+  elModalImg.innerHTML = null
   macObj.ram.forEach((element) => {
     let rambtn = document.createElement('button');
     rambtn.className = 'mac__rambtn'
@@ -67,37 +71,57 @@ function addRamMemBtn(macObj) {
   //Rasmlar qo'shish
 
   macObj.colors.forEach((item) => {
-    let [bigbox, ul, img, button, btnicons] = creatElements('div', 'ul', 'img', 'button', 'i');
-
-    bigbox.className = 'mac__bigimgbox'
-    btnicons.className = 'bx bx-fullscreen'
-    button.className = 'mac__imgboxbtn'
-    button.appendChild(btnicons)
-    img.className = 'mac__bigimg'
-    ul.className = 'mac__imglist'
-
     if(item.active) {
-      img.src = item.img
-      // mini imglarni qo'shish
-      item.imgs.forEach((img) => {
-        let [li, minimg] = creatElements('li', 'img');
-        li.className = 'mac__imgitem'
-        minimg.className = 'mac__minimg'
-        if(item.active) {
-          minimg.src = img
+      item.imgs.forEach((element, index) => {
+        let [bigli, minli, modalImg, modalMinImg] = creatElements('li', 'li', 'li', 'li')
+        minli.className = 'mac__imgitem'
+        modalMinImg.className = 'mac__imgitem'
+
+        bigli.innerHTML = `
+          <img class="mac__bigimg" src="${element}">
+        `
+        modalImg.innerHTML = `
+          <img class="mac__bigimg" src="${element}">
+        `
+
+        if(index == 0) {
+          minli.className = 'mac__imgitem mac__active'
+          modalMinImg.className = 'mac__imgitem mac__active'
         }
-        li.appendChild(minimg)
-        ul.appendChild(li)
+        minli.innerHTML = `
+          <img class="mac__minimg" id="${index}" src="${element}">
+        `
+        modalMinImg.innerHTML = `
+        <img class="mac__minimg" id="${index}" src="${element}">
+      `
+
+        minli.addEventListener('click', (e) =>{
+          let li = document.querySelectorAll('.mac__imglist li')
+          li.forEach((e) => {
+            e.className = 'mac__imgitem'
+          })
+          let id = e.target.id
+          elBigImg.style.transform = `translateX(-${400 * id}px)`
+          minli.className = 'mac__imgitem mac__active'
+        });
+
+        modalMinImg.addEventListener('click', (e) =>{
+          let li = document.querySelectorAll('#modalMinImg li')
+          li.forEach((e) => {
+            e.className = 'mac__imgitem'
+          })
+          let id = e.target.id
+          elModal.style.transform = `translateX(-${400 * id}px)`
+          modalMinImg.className = 'mac__imgitem mac__active'
+        });
+
+        elModal.appendChild(modalImg)
+        elBigImg.appendChild(bigli)
+        elMinImg.appendChild(minli)
+        elModalImg.appendChild(modalMinImg)
       })
-      bigbox.appendChild(img)
-      bigbox.appendChild(button)
-      elImgBox.appendChild(bigbox)
-      elImgBox.appendChild(ul)
     }
-
-
-  });
-
+  })
 }
 addRamMemBtn(macObj)
 
@@ -110,6 +134,7 @@ elRam.addEventListener('click', (e) => {
       element.active = true
     }
   });
+
   addPrice(macObj)
   memActive(macObj)
   addRamMemBtn(macObj)
@@ -127,7 +152,7 @@ function memActive(macObj) {
         }
       });
     });
-    addPrice()
+    addPrice(macObj)
     addRamMemBtn(macObj)
   });
 }
@@ -143,14 +168,32 @@ elColor.addEventListener('click', (e) => {
   addRamMemBtn(macObj)
 })
 
+let count = null
+plus.addEventListener('click', (e) => {
+  e.preventDefault()
+
+  input.value = (+input.value + 1).toString()
+  elPrice.textContent = (+count * +input.value) + "So'm"
+})
+
+minus.addEventListener('click', (e) => {
+  e.preventDefault()
+  if(input.value == 1) return
+
+  input.value = (+input.value - 1).toString()
+  elPrice.textContent = (+count * +input.value)+ "So'm"
+})
+
 function addPrice(macObj) {
   macObj.ram.forEach((item) => {
     if(item.active) {
       item.memory.forEach((el) => {
         if(el.active) {
           elPrice.textContent = `${el.price}So'm`
+          count = el.price
         }
       })
     }
   })
 }
+addPrice(macObj)

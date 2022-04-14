@@ -8,6 +8,18 @@
           box-sizing: border-box;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #fff;
   font-family: sans-serif;
@@ -51,11 +63,13 @@ html {
 }
 
 .mac__imgboxs {
+  position: relative;
   width: 50%;
 }
 
 .mac__bigimgbox {
   position: relative;
+  width: 400px;
   height: calc(100vh - 200px);
   height: 500px;
   display: -webkit-box;
@@ -67,19 +81,30 @@ html {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow: hidden;
+}
+
+.mac__biglist {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  list-style-type: none;
 }
 
 .mac__bigimg {
-  width: 100%;
+  width: 400px;
   height: 100%;
-  max-height: 80%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  max-height: 90%;
 }
 
-.mac__imgboxbtn {
+.mac__imgboxbtn, .mac__exit {
   position: absolute;
-  bottom: 0;
+  top: 50%;
   right: 0;
   color: #fff;
   background-color: transparent;
@@ -93,7 +118,15 @@ html {
   cursor: pointer;
 }
 
-.mac__imgboxbtn:hover .bx-fullscreen {
+.mac__imgboxbtn:hover .bx-fullscreen, .mac__exit:hover .bx-fullscreen {
+  color: #06c;
+}
+
+.mac__exit {
+  top: 80%;
+}
+
+.mac__exit:hover .bx-exit-fullscreen {
   color: #06c;
 }
 
@@ -112,6 +145,7 @@ html {
   -webkit-transition: all 0.4s linear;
   transition: all 0.4s linear;
   padding: 4px;
+  margin-right: 4px;
   overflow: hidden;
 }
 
@@ -119,11 +153,15 @@ html {
   border: 2px solid #1d1d1d;
 }
 
+.mac__active {
+  border: 2px solid #1d1d1d;
+}
+
 .mac__minimg {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .mac__box {
@@ -356,7 +394,8 @@ html {
           box-shadow: 0 0 1px 1px #06c;
 }
 
-.bx-fullscreen {
+.bx-fullscreen,
+.bx-exit-fullscreen {
   font-size: 32px;
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;

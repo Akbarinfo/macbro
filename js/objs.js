@@ -8,12 +8,12 @@ const macObj = {
         {
           active: true,
           size: 256,
-          price: '12 497 000',
+          price: 12497000,
         },
         {
           active: false,
           size: 512,
-          price: '15 066 000',
+          price: 15066000,
         },
       ],
     },
@@ -24,17 +24,17 @@ const macObj = {
         {
           active: false,
           size: 256,
-          price: '16 935 000',
+          price: 16935000,
         },
         {
           active: true,
           size: 512,
-          price: '19 270 500',
+          price: 19270500,
         },
         {
           active: false,
           size: 1024,
-          price: '21 606 500',
+          price: 21606500,
         },
       ],
     },
