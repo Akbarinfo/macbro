@@ -57,7 +57,7 @@ const macObj = {
       imgs: ['img/silver.webp', 'img/silver1.webp', 'img/silver2.webp', 'img/silver3.webp', 'img/silver4.webp'],
     },
     {
-      id: 'Gray',
+      id: 'Space Gray',
       name: "Kosmik kulrang",
       active: false,
       color: 'grey',

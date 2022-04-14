@@ -7,6 +7,15 @@ const elRam = document.querySelector('#ram')
 const elMem = document.querySelector('#mem')
 const elColor = document.querySelector('#color')
 const elPrice = document.querySelector('#price')
+//Title
+let elTram = document.querySelector('#tram')
+let elTmem = document.querySelector('#tmem')
+let elTcol = document.querySelector('#tcol')
+let elBtn = document.querySelector('#tbtn')
+
+elBtn.addEventListener('click', (e) => {
+  elBtn.textContent = 'Nusxa olindi'
+})
 
 //creatElements
 function creatElements(...array) {
@@ -29,6 +38,7 @@ function addRamMemBtn(macObj) {
     rambtn.className = 'mac__rambtn'
     if(element.active) {
       rambtn.className = 'mac__rambtn activ'
+      elTram.textContent = element.ramSize
 
       //memoryni qo'shib ketish qismi
       element.memory.forEach((item) => {
@@ -37,6 +47,7 @@ function addRamMemBtn(macObj) {
 
         if(item.active) {
           membtn.classList.add('activ')
+          elTmem.textContent = item.size
         }
         membtn.setAttribute('id', item.size)
         membtn.innerHTML = `${item.size}GB`
@@ -60,9 +71,13 @@ function addRamMemBtn(macObj) {
     name.setAttribute('id', item.name)
     name.textContent = item.name
 
+
     if(item.active) {
       colbtn.className = 'mac__colbtn activ'
+      elTcol.textContent = item.id
     }
+
+
     colbtn.appendChild(colspan)
     colbtn.appendChild(name)
     elColor.appendChild(colbtn)
@@ -83,7 +98,6 @@ function addRamMemBtn(macObj) {
         modalImg.innerHTML = `
           <img class="mac__bigimg" src="${element}">
         `
-
         if(index == 0) {
           minli.className = 'mac__imgitem mac__active'
           modalMinImg.className = 'mac__imgitem mac__active'
