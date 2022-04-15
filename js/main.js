@@ -187,7 +187,7 @@ plus.addEventListener('click', (e) => {
   e.preventDefault()
 
   input.value = (+input.value + 1).toString()
-  elPrice.textContent = (+count * +input.value) + "So'm"
+  elPrice.textContent = (+count * +input.value) + " So'm"
 })
 
 minus.addEventListener('click', (e) => {
@@ -195,7 +195,7 @@ minus.addEventListener('click', (e) => {
   if(input.value == 1) return
 
   input.value = (+input.value - 1).toString()
-  elPrice.textContent = (+count * +input.value)+ "So'm"
+  elPrice.textContent = (+count * +input.value)+ " So'm"
 })
 
 function addPrice(macObj) {
@@ -203,7 +203,7 @@ function addPrice(macObj) {
     if(item.active) {
       item.memory.forEach((el) => {
         if(el.active) {
-          elPrice.textContent = `${el.price}So'm`
+          elPrice.textContent = `${el.price} So'm`
           count = el.price
         }
       })
